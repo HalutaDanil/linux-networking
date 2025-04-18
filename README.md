@@ -12,7 +12,7 @@ Linux networks configuration on virtual machines.
    2.2. [Addressing](#addressing) \
    2.3. [Routing](#routing)
 3. [Chapter III](#chapter-iii) \
-   3.1. [ipcalc tool](#ipcalc-tool) \
+   3.1. [ipcalc tool](#part-1-ipcalc-tool) \
    3.2. [Static routing between two machines](#part-2-static-routing-between-two-machines) \
    3.3. [iperf3 utility](#part-3-iperf3-utility) \
    3.4. [Network firewall](#part-4-network-firewall) \
@@ -137,7 +137,7 @@ As a result of the work you should provide a report with completed tasks. Each p
 - It’s allowed to have several task points shown in one screenshot, but they must all be described in the caption;
 - Install **Ubuntu 20.04 Server LTS** on all virtual machines created during the task.
 
-List of utilities: `ipcalc`, `ip`, `netplan`, `netstat`, `iperf3`, `iptables`, `ping`, `nmap`, `sysctl`, `tcpdump`, `traceroute`, `systemctl`, `telnet`, `dhclient`.
+List of utilities: `ipcalc`, `ip`, `netplan`, `netstat`, `iperf3`, `iptables`, `ping`, `nmap`, `sysctl`, `tcpdump`, `traceroute`, `systemctl`, `telnet`, `dhclient`, `isc-dhcp-server`, `apache2`.
 
 ## Part 1. **ipcalc** tool
 

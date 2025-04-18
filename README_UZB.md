@@ -150,7 +150,7 @@ Ishingiz natijasida siz bajarilgan vazifalar haqida hisobot topshirishingiz kera
 - Bitta skrinshotda bir vaqtning o'zida bir nechta vazifa nuqtalarini ko'rsatishga ruxsat beriladi, ammo ularning barchasi skrinshotning sarlavhasida tasvirlangan bo'lishi kerak.
 - Vazifa davomida yaratilgan barcha virtual mashinalarda o'rnating **Ubuntu 20.04 Server LTS**.
 
-Utilitalar ro’yxati: `ipcalc`, `ip`, `netplan`, `netstat`, `iperf3`, `iptables`, `ping`, `nmap`, `sysctl`, `tcpdump`, `traceroute`, `systemctl`, `telnet`, `dhclient`.
+Utilitalar ro’yxati: `ipcalc`, `ip`, `netplan`, `netstat`, `iperf3`, `iptables`, `ping`, `nmap`, `sysctl`, `tcpdump`, `traceroute`, `systemctl`, `telnet`, `dhclient`, `isc-dhcp-server`, `apache2`.
 
 ## Part 1. **ipcalc** vositasi
 
