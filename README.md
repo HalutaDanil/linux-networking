@@ -294,7 +294,7 @@ command.
 ##### Add static routes to r1 and r2 in configuration file. Here is an example for r1 route to 10.20.0.0/26:
 ```shell
 # Add description to the end of the eth1 network interface:
-- to: 10.20.0.0
+- to: 10.20.0.0/26
   via: 10.100.0.12
 ```
 

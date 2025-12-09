@@ -307,7 +307,7 @@ default via 10.10.0.1 dev eth0
 ##### Konfiguratsiya faylida r1 va r2 marshrutizatorlariga statik marshrutlarni qo'shing. 10.20.0.0/26 tarmog'iga r1 marshrutiga misol:
 ```shell
 # eth1 tarmoq interfeysi tavsifining oxiriga qo'shing:
-`-` to: 10.20.0.0 
+`-` to: 10.20.0.0/26
 via: 10.100.0.12
 ```
 - Hisobotda har bir router uchun o'zgartirilgan *etc/netplan/00-installer-config.yaml* faylining mazmunini o'z ichiga olgan skrinshotlarni joylashtiring.
