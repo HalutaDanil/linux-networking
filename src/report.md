@@ -22,5 +22,34 @@
 
 - 2) Какие из перечисленных IP-адресов шлюза возможны у сети 10.10.0.0/18: 10.0.0.1 - `невозможен`, 10.10.0.2 - `возможен`, 10.10.10.10 - `возможен`, 10.10.100.1 - `невозможен`, 10.10.1.255 - `возможен`
 
+# Part 2. Статическая маршрутизация между двумя машинами
 
+## Подними две виртуальные машины (далее -- ws1 и ws2).
 
+- поднял две виртуальные машины в `VirtualBox` с `Ubuntu 20.04 LTS`
+
+## С помощью команды ip a посмотри существующие сетевые интерфейсы.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_ipa.png?ref_type=heads)
+- вывод команды `ip a` на `ws1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_ipa.png?ref_type=heads)
+- вывод команды `ip a` на `ws2`
+
+## Опиши сетевой интерфейс, соответствующий внутренней сети, на обеих машинах и задай следующие адреса и маски: ws1 — 192.168.100.10, маска /16, ws2 — 172.24.116.8, маска /12.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_netplan_yaml.png?ref_type=heads)
+- содержание файла конфигурации `etc/netplan/00-installer-config.yaml` на `ws1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_netplan_yaml.png?ref_type=heads)
+- содержание файла конфигурации `etc/netplan/00-installer-config.yaml` на `ws2`
+
+## Выполни команду netplan apply для перезапуска сервиса сети.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_netplanaplly.png?ref_type=heads)
+- вывод и вызов команды `netplan apply` на `ws1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_netplanapply.png?ref_type=heads)
+- вывод и вызов команды `netplan apply` на `ws2`
+
+## 2.1. Добавление статического маршрута вручную
