@@ -95,6 +95,28 @@
 ![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_ping_2.png?ref_type=heads)
 - пинг `ws1` на `ws2` командой `ping`
 
+# Part 3. Утилита iperf3
+
+## 3.1. Скорость соединения
+
+## Переведи и запиши в отчёт: 8 Mbps в MB/s, 100 MB/s в Kbps, 1 Gbps в Mbps.
+
+- 8 Mbps - `1 MB/s`.
+- 100 MB/s - `800 000 Kbps`.
+- 1 Gbps - `1000 Mbps`.
+
+## 3.2. Утилита iperf3
+
+## Измерь скорость соединения между ws1 и ws2.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_iperf3_result.png?ref_type=heads)
+- запуск сервера на `ws2` командой `iperf3 -s` и результат замера скорости
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_iperf3_result.png?ref_type=heads)
+- запуск клиента на `ws1` командой `iperf -c 172.24.116.8` и результат замера скорости
+
+
+
 
 
 
