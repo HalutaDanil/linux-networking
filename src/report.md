@@ -38,18 +38,64 @@
 
 ## Опиши сетевой интерфейс, соответствующий внутренней сети, на обеих машинах и задай следующие адреса и маски: ws1 — 192.168.100.10, маска /16, ws2 — 172.24.116.8, маска /12.
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_netplan_yaml.png?ref_type=heads)
-- содержание файла конфигурации `etc/netplan/00-installer-config.yaml` на `ws1`
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_netplan_yaml_1.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на `ws1`
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_netplan_yaml.png?ref_type=heads)
-- содержание файла конфигурации `etc/netplan/00-installer-config.yaml` на `ws2`
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_netplan_yaml_1.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на `ws2`
 
 ## Выполни команду netplan apply для перезапуска сервиса сети.
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_netplanaplly.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_netplan_apply.png?ref_type=heads)
 - вывод и вызов команды `netplan apply` на `ws1`
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_netplanapply.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_netplan_apply.png?ref_type=heads)
 - вывод и вызов команды `netplan apply` на `ws2`
 
 ## 2.1. Добавление статического маршрута вручную
+
+- зашел в `tools` и создал `nat network`
+- изменил в настройках `ws1` и `ws2` `network` с `NAT` на `NAT network`, чтобы объединить машины в одну локальную сеть, ибо в режиме `NAT` вм изолированы друг от друга
+
+## Добавь статический маршрут от одной машины до другой и обратно при помощи команды вида ip r add.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_ipr_add.png?ref_type=heads)
+- использование команды `ip r add` на `ws1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_ipr_add.png?ref_type=heads)
+- использование команды `ip r add` на `ws2`
+
+## Пропингуй соединение между машинами.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_ping_1.png?ref_type=heads)
+- пинг `ws2` на `ws1` командой `ping`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_ping_1.png?ref_type=heads)
+- пинг `ws1` на `ws2` командой `ping`
+
+## 2.2. Добавление статического маршрута с сохранением
+
+## Перезапусти машины.
+
+- прописал команду `reboot` на `ws1` и `ws2`
+
+## Добавь статический маршрут от одной машины до другой с помощью файла /etc/netplan/00-installer-config.yaml.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_netplan_yaml_2.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на `ws1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_netplan_yaml_2.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на `ws2`
+
+## Пропингуй соединение между машинами.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_ping_2.png?ref_type=heads)
+- пинг `ws2` на `ws1` командой `ping`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_ping_2.png?ref_type=heads)
+- пинг `ws1` на `ws2` командой `ping`
+
+
+
+
+
