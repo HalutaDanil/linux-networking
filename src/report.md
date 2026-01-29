@@ -115,6 +115,43 @@
 ![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_iperf3_result.png?ref_type=heads)
 - запуск клиента на `ws1` командой `iperf -c 172.24.116.8` и результат замера скорости
 
+# Part 4. Сетевой экран
+
+## 4.1. Утилита iptables
+
+## Создай файл /etc/firewall.sh, имитирующий файрвол, на ws1 и ws2:
+
+- создал файл командой `sudo touch /etc/firewall.sh` на `ws1` и `ws2` соответственно
+
+## Добавление в файл правил
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_firewallsh.png?ref_type=heads)
+- содержание файла `/etc/firewall.sh` на `ws1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_firewallsh.png?ref_type=heads)
+- содержание файла `/etc/firewall.sh` на `ws2`
+
+## Запусти файлы на обеих машинах командами chmod +x /etc/firewall.sh и /etc/firewall.sh.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm1_firewall_run.png?ref_type=heads)
+- запуск файла на `ws1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_firewall_run.png?ref_type=heads)
+- запуск файла на `ws2`
+
+- разница заключается в том, что `iptables`, смотрит сверху-вниз и принимает решения при первом попавшем пункте правила. То есть на `ws1` он увидит `DROP` и отклонит `echo-reply`, не посмотрев на противоложное `ACCEPT` правило снизу, а на `ws2` он примет решение `ACCEPT`, не посмотрев на противоложное ему правило `DROP` снизу.
+
+## 4.2. Утилита nmap
+
+## Командой ping найди машину, которая не «пингуется», после чего утилитой nmap покажи, что хост машины запущен.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm2_nmap_and_ping.png?ref_type=heads)
+- использование команд `ping` для того, чтобы найти машину, которая не пингуется и `nmap` для того, чтобы понять, что машина поднята
+
+## Сохрани дампы образов виртуальных машин
+
+- сохранил дампу образов виртуальных машин через `file` и `Export Appliance`
+
 
 
 
