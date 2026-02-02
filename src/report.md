@@ -152,6 +152,131 @@
 
 - сохранил дампу образов виртуальных машин через `file` и `Export Appliance`
 
+# Part 5. Статическая маршрутизация сети
+
+## Подними пять виртуальных машин (3 рабочие станции (ws11, ws21, ws22) и 2 роутера (r1, r2)).
+
+- поднял пять виртуальных машин в `VirtualBox` с `Ubuntu 20.04 LTS`
+
+## 5.1. Настройка адресов машин
+
+## Настрой конфигурации машин в etc/netplan/00-installer-config.yaml согласно сети на рисунке.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_yaml.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на ws11
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm21_yaml.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на ws21
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm22_yaml.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на ws22
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_yaml.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на `r1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r2_yaml.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на `r2`
+
+## Перезапусти сервис сети. Если ошибок нет, командой ip -4 a проверь, что адрес машины задан верно. Также пропингуй ws22 с ws21. Аналогично пропингуй r1 с ws11.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/ws11_apply_ipa.png?ref_type=heads)
+- вызов и вывод команд `netplan apply` и `ip -4 a` на `ws11`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/ws21_apply_ipa.png?ref_type=heads)
+- вызов и вывод команд `netplan apply` и `ip -4 a` на `ws21`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/ws22_apply_ipa.png?ref_type=heads)
+- вызов и вывод команд `netplan apply` и `ip -4 a` на `ws22`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/r1_apply_ipa.png?ref_type=heads)
+- вызов и вывод команд `netplan apply` и `ip -4 a` на `r1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/r2_apply_ipa.png?ref_type=heads)
+- вызов и вывод команд `netplan apply` и `ip -4 a` на `r2`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/ws11_ping_r1.png?ref_type=heads)
+- пинг `r1` с `ws11`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/ws21_ping_ws22.png?ref_type=heads)
+- пинг `ws22` с `ws21`
+
+## 5.2. Включение переадресации IP-адресов
+
+## Для включения переадресации IP выполни команду на роутерах:
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/r1_sysctl_w.png?ref_type=heads)
+- вызов и вывод команд `sysctl -w net.ipv4.forward=1` на `r1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/r2_sysctl_w.png?ref_type=heads)
+- вызов и вывод команд `sysctl -w net.ipv4.forward=1` на `r2`
+
+## Открой файл /etc/sysctl.conf и добавь в него следующую строку: net.ipv4.ip_forward = 1
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/r1_sysctl_conf.png?ref_type=heads)
+- вид файла конфигурации `etc/sysctl.conf` на `r1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/r2_sysctl_conf.png?ref_type=heads)
+- вид файла конфигурации `etc/sysctl.conf` на `r2`
+
+## 5.3. Установка маршрута по умолчанию
+
+## Настрой маршрут по умолчанию (шлюз) для рабочих станций. Для этого добавь default перед IP-роутера в файле конфигураций.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_yaml.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на ws11
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm21_yaml.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на ws21
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/vm22_yaml.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на ws22
+
+## Вызови ip r и покажи, что добавился маршрут в таблицу маршрутизации.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_ip_r.png?ref_type=heads)
+- вызов и вывод команд `ip r` на `ws11`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws21_ip_r.png?ref_type=heads)
+- вызов и вывод команд `ip r` на `ws21`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws22_ip_r.png?ref_type=heads)
+- вызов и вывод команд `ip r` на `ws22`
+
+## Пропингуй с ws11 роутер r2 и покажи на r2, что пинг доходит. Для этого используй команду: tcpdump -tn -i eth0
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r2_tcpdump.png?ref_type=heads)
+- вызов и вывод команд `tcpdump -tn -i enp0s8` на `r2`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_ping_r2.png?ref_type=heads)
+- вызов и вывод команд `ping 10.100.0.12` на `ws11`
+
+## 5.4. Добавление статических маршрутов
+
+## Добавь в роутеры r1 и r2 статические маршруты в файле конфигураций. Пример для r1 маршрута в сетку 10.20.0.0/26:
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_yaml.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на `r1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r2_yaml.png?ref_type=heads)
+- вид файла конфигурации `etc/netplan/00-installer-config.yaml` на `r2`
+
+## Вызови ip r и покажи таблицы с маршрутами на обоих роутерах. 
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_ip_r.png?ref_type=heads)
+- вызов и вывод команд `ip r` на `r1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r2_ip_r.png?ref_type=heads)
+- вызов и вывод команд `ip r` на `r2`
+
+## Запусти команды на ws11: ip r list 10.10.0.0/[маска сети] и ip r list 0.0.0.0/0
+
+
+
+
+
+
+
+
 
 
 
