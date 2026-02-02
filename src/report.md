@@ -270,9 +270,39 @@
 
 ## Запусти команды на ws11: ip r list 10.10.0.0/[маска сети] и ip r list 0.0.0.0/0
 
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_ip_r_list.png?ref_type=heads)
+- вызов и вывод команд `ip r list 10.10.0.0/18` и `ip r list 0.0.0.0/0` на `ws11`
 
+- он попал под маршрут, отличный от `0.0.0.0/0`, потому что к хостам, находящимся в его сети, он может ходить напрямую, без необходимости задействования шлюза. А вот при обращении за пределы своей сети, уже необходим шлюз, который знает, куда перенаправлять пакеты.
 
+## 5.5. Построение списка маршрутизаторов
 
+## При помощи утилиты traceroute построй список маршрутизаторов на пути от ws11 до ws21.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_traceroute_ws21.png?ref_type=heads)
+- вызов и вывод команд `traceroute 10.20.0.10` на `ws11`
+
+## Запусти на r1 команду дампа
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_tcpdump_tnv.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_full_output_tcpdump_1.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_full_output_tcpdump_2.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_full_output_tcpdump_3.png?ref_type=heads)
+- вызов и вывод команд `tcpdump -tnv -i enp0s3` на `r1`
+
+- `traceroute` использует значение `TTL` так: первым действием он отправляет пакет с `TTL = 1`, хост, принимающий этот пакет обязан уменьшить значение `TTL` на один и, если получился ноль, то жизнь пакета закончилась, хост убивает этот пакет и отдает `ICMP` ответ отправителю, что `time excedeed`. Соответственно, `traceroute`, получая такой ответ не от того, кто являлся конечным получателем, фиксирует, что это маршрутизатор на пути, записывает его и отправляет новые пакеты с увеличенным на один `TTL`. Дальше происходит того же самое, пока не дойдет до хоста назначения. А уж хост назначение отвечает нам `port unreacheble`, потому что `traceroute` намеренно отправляет пакеты на несуществующие и не занятые порты. Получая такой ответ, он фиксирует, что хост активен и отвечает.
+
+## 5.6. Использование протокола ICMP при маршрутизации
+
+## Запусти на r1 перехват сетевого трафика, проходящего через eth0 с помощью команды: tcpdump -n -i eth0 icmp 
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_tcpdump_n.png?ref_type=heads)
+- вызов и вывод команд `tcpdump -n -i enp0s3 icmp` на `r1`
+
+## Пропингуй с ws11 несуществующий IP (например, 10.30.0.111) с помощью команды: ping -c 1 10.30.0.111
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_ping_c.png?ref_type=heads)
+- вызов и вывод команд `ping -c 1 10.30.0.111` на `ws11`
 
 
 
