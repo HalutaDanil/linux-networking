@@ -304,6 +304,53 @@
 ![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_ping_c.png?ref_type=heads)
 - вызов и вывод команд `ping -c 1 10.30.0.111` на `ws11`
 
+# Part 6. Динамическая настройка IP с помощью DHCP
+
+## Для r2 настрой в файле /etc/dhcp/dhcpd.conf конфигурацию службы DHCP:
+
+## 1) Укажи адрес маршрутизатора по умолчанию, DNS-сервер и адрес внутренней сети
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r2_dhcpd_conf.png?ref_type=heads)
+- вид файла `/etc/dhcp/dhcpd.conf` на `r2`
+
+## 2) В файле resolv.conf пропиши nameserver 8.8.8.8.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r2_resolve_conf.png?ref_type=heads)
+- вид файла `/etc/resolv.conf` на `r2`
+
+## Перезагрузи службу DHCP командой systemctl restart isc-dhcp-server. Машину ws21 перезагрузи при помощи reboot и через ip a покажи, что она получила адрес. Также пропингуй ws22 с ws21.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r2_restart_isc-dhcp-server.png?ref_type=heads)
+- вызов и вывод команды `systemctl restart isc-dhcp-server` на `r2`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws21_ipa_dhclient.png?ref_type=heads)
+- вызов и вывод команд `dhclient` и `ip a` на `ws21`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws21_ping_ws22_.png?ref_type=heads)
+- пинг `ws22` с `ws21`
+
+## Укажи MAC-адрес у ws11, для этого в etc/netplan/00-installer-config.yaml надо добавить строки: macaddress: 10:10:10:10:10:BA, dhcp4: true.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_dhcp_yaml.png?ref_type=heads)
+- содержимое `/etc/netplan/00-installer-config.yaml` на `ws11`
+
+## Для r1 настрой аналогично r2, но сделай выдачу адресов с жесткой привязкой к MAC-адресу (ws11). Проведи аналогичные тесты.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_dhcpd_conf.png?ref_type=heads)
+- вид файла `/etc/dhcp/dhcpd.conf` на `r1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_resolv_conf.png?ref_type=heads)
+- вид файла `/etc/resolv.conf` на `r1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_restart_isc-dhcp-server.png?ref_type=heads)
+- вызов и вывод команды `systemctl restart isc-dhcp-server` на `r1`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_ipa_dhcp.png?ref_type=heads)
+- вызов и вывод команд `ip a` на `ws11`
+
+ПРОПИНГОВАТЬ С ВС11 ВС22, А ТАКЖЕ ИСПРАВИТЬ НА ВС21 ЯМЛ, УБРАВ СТАТИКУ И ЗАСКРИНИТЬ БЕЗ ВСЯКИХ DHCLIENT
+
+
 
 
 
