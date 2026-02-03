@@ -179,25 +179,25 @@
 
 ## Перезапусти сервис сети. Если ошибок нет, командой ip -4 a проверь, что адрес машины задан верно. Также пропингуй ws22 с ws21. Аналогично пропингуй r1 с ws11.
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/ws11_apply_ipa.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_apply_ipa.png?ref_type=heads)
 - вызов и вывод команд `netplan apply` и `ip -4 a` на `ws11`
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/ws21_apply_ipa.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws21_apply_ipa.png?ref_type=heads)
 - вызов и вывод команд `netplan apply` и `ip -4 a` на `ws21`
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/ws22_apply_ipa.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws22_apply_ipa.png?ref_type=heads)
 - вызов и вывод команд `netplan apply` и `ip -4 a` на `ws22`
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/r1_apply_ipa.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_apply_ipa.png?ref_type=heads)
 - вызов и вывод команд `netplan apply` и `ip -4 a` на `r1`
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/r2_apply_ipa.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r2_apply_ipa.png?ref_type=heads)
 - вызов и вывод команд `netplan apply` и `ip -4 a` на `r2`
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/ws11_ping_r1.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_ping_r1.png?ref_type=heads)
 - пинг `r1` с `ws11`
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/ws21_ping_ws22.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws21_ping_ws22.png?ref_type=heads)
 - пинг `ws22` с `ws21`
 
 ## 5.2. Включение переадресации IP-адресов
