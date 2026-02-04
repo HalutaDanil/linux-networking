@@ -348,7 +348,18 @@
 ![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_ipa_dhcp.png?ref_type=heads)
 - вызов и вывод команд `ip a` на `ws11`
 
-ПРОПИНГОВАТЬ С ВС11 ВС22, А ТАКЖЕ ИСПРАВИТЬ НА ВС21 ЯМЛ, УБРАВ СТАТИКУ И ЗАСКРИНИТЬ БЕЗ ВСЯКИХ DHCLIENT
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_ping_ws22_.png?ref_type=heads)
+- пинг `ws22` с `ws11`
+
+## Запроси с ws21 обновление IP-адреса.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws21_ipa_last.png?ref_type=heads) 
+- вызов и вывод команды `ip a` на `ws21` до смены `ip`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws21_dhclient_ipa.png?ref_type=heads) 
+- вызов и вывод команд `dhclient -r && dhclient` и `ip a` на `ws21`
+
+- командой `dhclient -r && dhclient` мы отправляем `DHCPRELEASE`, который говорит роутеру о том, что на данный адрес аренда больше не нужна аренду, завершаем ее. Командой `dhclient` мы отправляем сначала `DHCPDISCOVER` на широковещательный адрес, соответственно пакет доходит до роутера, тот его подхватывает и отправляет нам `DHCPOFFER`, в котором он предлагает взять такой-то `ip`, на что мы отвечаем `DHCPREQUEST`, соглашаясь с арендой данного адреса, потом роутер высылает `DHCPACK`, выдавая наш `lease`.
 
 
 
