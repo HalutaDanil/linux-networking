@@ -361,6 +361,70 @@
 
 - командой `dhclient -r && dhclient` мы отправляем `DHCPRELEASE`, который говорит роутеру о том, что на данный адрес аренда больше не нужна аренду, завершаем ее. Командой `dhclient` мы отправляем сначала `DHCPDISCOVER` на широковещательный адрес, соответственно пакет доходит до роутера, тот его подхватывает и отправляет нам `DHCPOFFER`, в котором он предлагает взять такой-то `ip`, на что мы отвечаем `DHCPREQUEST`, соглашаясь с арендой данного адреса, потом роутер высылает `DHCPACK`, выдавая наш `lease`.
 
+# Part 7
+
+## В файле /etc/apache2/ports.conf на ws22 и r1 измени строку Listen 80 на Listen 0.0.0.0:80, то есть сделай сервер Apache2 общедоступным.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws22_apache2_portsconf.png?ref_type=heads) 
+- вид файла `/etc/apache2/ports.conf` на `ws22`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_apache2_portconf.png?ref_type=heads) 
+- вид файла `/etc/apache2/ports.conf` на `r1`
+
+## Запусти веб-сервер Apache командой service apache2 start на ws22 и r1.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws22_apache2_start.png?ref_type=heads) 
+- вызов и вывод команды `service apache2 start` на `ws22`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_apache2_start.png?ref_type=heads) 
+- вызов и вывод команды `service apache2 start` на `r1`
+
+## Проверь соединение между ws22 и r1 командой ping.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_ping_ws22.png?ref_type=heads) 
+- вызов и вывод команды `ping 10.20.0.20` на `r1`
+
+## Проверь соединение между ws22 и r1 командой ping.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_ping_ws22_2.png?ref_type=heads) 
+- вызов и вывод команды `ping 10.20.0.20` на `r1`
+
+## Добавь в фаервол, созданный по аналогии с фаерволом из Части 4, на r2 следующие правила:
+##1) Удаление правил в таблице filter — iptables -F;
+##2) Удаление правил в таблице «NAT» — iptables -F -t nat;
+##3) Отбрасывать все маршрутизируемые пакеты — iptables --policy FORWARD DROP.
+##Запусти файл также, как в Части 4.
+##Проверь соединение между ws22 и r1 командой ping.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_ping_ws22.png?ref_type=heads) 
+- вызов и вывод команды `ping 10.20.0.20` на `r1`
+
+##Добавь в файл ещё одно правило:
+##4) Разрешить маршрутизацию всех пакетов протокола ICMP.
+##Запусти файл также, как в Части 4.
+##Проверь соединение между ws22 и r1 командой ping.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_ping_ws22_2.png?ref_type=heads) 
+- вызов и вывод команды `ping 10.20.0.20` на `r1`
+
+##Добавь в файл ещё два правила:
+##5) Включи SNAT, а именно маскирование всех локальных IPиз локальной сети, находящейся за r2 (по обозначениям из Части 5 — сеть 10.20.0.0).
+##6) Включи DNAT на 8080 порт машины r2 и добавить к веб-серверу Apache, запущенному на ws22, доступ извне сети.
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r2_firewallsh_task7.png?ref_type=heads) 
+- вид файла `/etc/firewall.sh`
+
+## Проверь соединение по TCP для SNAT: для этого с ws22 подключиться к серверу Apache на r1 
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws22_telnet_r1.png?ref_type=heads) 
+- вызов и вывод команды `telnet 10.100.0.11 80` на `ws22`
+
+## Проверь соединение по TCP для DNAT: для этого с r1 подключиться к серверу Apache на ws22 командой telnet (обращаться по адресу r2 и порту 8080).
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_telnet_ws22.png?ref_type=heads) 
+- вызов и вывод команды `telnet 10.100.0.12 8080` на `r1`
+
+
 
 
 
