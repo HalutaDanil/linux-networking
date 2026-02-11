@@ -323,8 +323,8 @@
 ![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r2_restart_isc-dhcp-server.png?ref_type=heads)
 - вызов и вывод команды `systemctl restart isc-dhcp-server` на `r2`
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws21_ipa_dhclient.png?ref_type=heads)
-- вызов и вывод команд `dhclient` и `ip a` на `ws21`
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws21_ipa_dhcp.png?ref_type=heads)
+- вызов и вывод команд `ip a` на `ws21`
 
 ![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws21_ping_ws22_.png?ref_type=heads)
 - пинг `ws22` с `ws21`
