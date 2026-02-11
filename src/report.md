@@ -204,18 +204,18 @@
 
 ## Для включения переадресации IP выполни команду на роутерах:
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/r1_sysctl_w.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_sysctl_w.png?ref_type=heads)
 - вызов и вывод команд `sysctl -w net.ipv4.forward=1` на `r1`
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/r2_sysctl_w.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r2_sysctl_w.png?ref_type=heads)
 - вызов и вывод команд `sysctl -w net.ipv4.forward=1` на `r2`
 
 ## Открой файл /etc/sysctl.conf и добавь в него следующую строку: net.ipv4.ip_forward = 1
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/r1_sysctl_conf.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_sysctl_conf.png?ref_type=heads)
 - вид файла конфигурации `etc/sysctl.conf` на `r1`
 
-![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/r2_sysctl_conf.png?ref_type=heads)
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r2_sysctl_conf.png?ref_type=heads)
 - вид файла конфигурации `etc/sysctl.conf` на `r2`
 
 ## 5.3. Установка маршрута по умолчанию
