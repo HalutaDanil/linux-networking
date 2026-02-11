@@ -424,7 +424,44 @@
 ![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/r1_telnet_ws22.png?ref_type=heads) 
 - вызов и вывод команды `telnet 10.100.0.12 8080` на `r1`
 
+# Part 8. Дополнительно. Знакомство с SSH Tunnels
 
+## Запусти на r2 фаервол с правилами из Части 7.
+
+- `chmod +x /etc/firewall.sh`
+- `sudo /etc/firewall.sh`
+
+## Запусти веб-сервер Apache на ws22 только на localhost (то есть в файле /etc/apache2/ports.conf измени строку Listen 80 на Listen localhost:80).
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws22_ports_conf_local.png?ref_type=heads) 
+- содержание файла `/etc/apache2/ports.conf` на `ws22`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws22_apache2_start_local.png?ref_type=heads) 
+- вызов и вывод команды `service apache2 start` на `ws22`
+
+## Воспользуйся Local TCP forwarding с ws21 до ws22, чтобы получить доступ к веб-серверу на ws22 с ws21.
+
+- `sudo apt update` и `sudo apt install openssh-server` на `ws22`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws21_local_forwarding_ws22.png?ref_type=heads) 
+- вызов и вывод команды `ssh -L 9999:localhost:80 aemonhul@10.20.0.20` на `ws21`
+
+## Для проверки, сработало ли подключение в обоих предыдущих пунктах, перейди во второй терминал
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws21_telnet_tty2.png?ref_type=heads) 
+- вызов и вывод команды `telnet 127.0.0.1 9999` на `ws21`
+
+## Воспользуйся Remote TCP forwarding c ws11 до ws22, чтобы получить доступ к веб-серверу на ws22 с ws11.
+
+- `sudo apt update` и `sudo apt install openssh-server` на `ws11`
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws22_remote_forwarding_ws11.png?ref_type=heads) 
+- вызов и вывод команды `ssh -R 9999:localhost:80 aemonhul@10.10.0.2` на `ws22`
+
+## Для проверки, сработало ли подключение в обоих предыдущих пунктах, перейди во второй терминал
+
+![](https://git.21-school.ru/students_repo/aemonhul/DO2_LinuxNetwork.ID_356275-1/raw/develop/src/image_for_md/ws11_telnet_ws22_remotefor.png?ref_type=heads) 
+- вызов и вывод команды `telnet 127.0.0.1 9999` на `ws11`
 
 
 
