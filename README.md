@@ -19,11 +19,28 @@ Network infrastructure configuration across multiple virtual machines: routers a
 
 ### ✨ Features
 
-| Component | Technologies |\n|-----------|-------------|\n| IP Addressing | Static IP via netplan |\n| DHCP | isc-dhcp-server |\n| NAT | iptables + sysctl ip_forward |\n| Firewall | Bash scripts for rule management |\n| Web Server | Apache2 on ws22 |\n| Tunneling | SSH local/remote forwarding |\n| Traffic Analysis | tcpdump, telnet, iperf3 |
+| Component | Technologies |
+|-----------|-------------|
+| IP Addressing | Static IP via netplan |
+| DHCP | isc-dhcp-server |
+| NAT | iptables + sysctl ip_forward |
+| Firewall | Bash scripts for rule management |
+| Web Server | Apache2 on ws22 |
+| Tunneling | SSH local/remote forwarding |
+| Traffic Analysis | tcpdump, telnet, iperf3 |
 
 ### 🚀 Quick Start
 
-```bash\n# Check routing\nip route\n\n# Test connectivity\nping 1.1.1.1\n\n# Firewall rules\nsudo ./firewall.sh\n```
+```bash
+# Check routing
+ip route
+
+# Test connectivity
+ping 1.1.1.1
+
+# Firewall rules
+sudo ./firewall.sh
+```
 
 ---
 
@@ -42,11 +59,28 @@ Network infrastructure configuration across multiple virtual machines: routers a
 
 ### ✨ Возможности
 
-| Компонент | Технологии |\n|-----------|-----------|\n| IP-адресация | Статический IP через netplan |\n| DHCP | isc-dhcp-server |\n| NAT | iptables + sysctl ip_forward |\n| Файрвол | Bash-скрипты управления правилами |\n| Веб-сервер | Apache2 на ws22 |\n| Туннелирование | SSH local/remote forwarding |\n| Анализ трафика | tcpdump, telnet, iperf3 |
+| Компонент | Технологии |
+|-----------|-----------|
+| IP-адресация | Статический IP через netplan |
+| DHCP | isc-dhcp-server |
+| NAT | iptables + sysctl ip_forward |
+| Файрвол | Bash-скрипты управления правилами |
+| Веб-сервер | Apache2 на ws22 |
+| Туннелирование | SSH local/remote forwarding |
+| Анализ трафика | tcpdump, telnet, iperf3 |
 
 ### 🚀 Быстрый старт
 
-```bash\n# Проверка маршрутизации\nip route\n\n# Тест соединения\nping 1.1.1.1\n\n# Правила файрвола\nsudo ./firewall.sh\n```
+```bash
+# Проверка маршрутизации
+ip route
+
+# Тест соединения
+ping 1.1.1.1
+
+# Правила файрвола
+sudo ./firewall.sh
+```
 
 ---
 
