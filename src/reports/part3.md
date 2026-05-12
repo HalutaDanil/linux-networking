@@ -10,4 +10,4 @@
 
 - Measured connection speed between ws1 and ws2 using iperf3
 
-![iperf3 result](image_for_md/vm1_iperf3_result.png)
+![iperf3 result](../image_for_md/vm1_iperf3_result.png)
