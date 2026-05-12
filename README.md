@@ -29,18 +29,6 @@ Network infrastructure configuration across multiple virtual machines: routers a
 | Tunneling | SSH local/remote forwarding |
 | Traffic Analysis | tcpdump, telnet, iperf3 |
 
-### 🚀 Quick Start
-
-```bash
-# Check routing
-ip route
-
-# Test connectivity
-ping 1.1.1.1
-
-# Firewall rules
-sudo ./firewall.sh
-```
 
 ---
 
@@ -69,18 +57,6 @@ sudo ./firewall.sh
 | Туннелирование | SSH local/remote forwarding |
 | Анализ трафика | tcpdump, telnet, iperf3 |
 
-### 🚀 Быстрый старт
-
-```bash
-# Проверка маршрутизации
-ip route
-
-# Тест соединения
-ping 1.1.1.1
-
-# Правила файрвола
-sudo ./firewall.sh
-```
 
 ---
 
