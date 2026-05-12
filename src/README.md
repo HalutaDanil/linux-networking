@@ -6,14 +6,14 @@
 
 | Part | Description | Link |
 |------|-------------|------|
-| Part 1 | IP Calculation & Subnetting | [README.md](README.md#part-1) |
-| Part 2 | Static Routing | [README.md](README.md#part-2) |
-| Part 3 | iperf3 Benchmarking | [README.md](README.md#part-3) |
-| Part 4 | Firewall | [README.md](README.md#part-4) |
-| Part 5 | DHCP | [README.md](README.md#part-5) |
-| Part 6 | NAT | [README.md](README.md#part-6) |
-| Part 7 | SSH Tunneling | [README.md](README.md#part-7) |
-| Part 8 | Apache Web Server | [README.md](README.md#part-8) |
+| Part 1 | IP Calculation & Subnetting | [part1.md](reports/part1.md) |
+| Part 2 | Static Routing | [part2.md](reports/part2.md) |
+| Part 3 | iperf3 Benchmarking | [part3.md](reports/part3.md) |
+| Part 4 | Firewall | [part4.md](reports/part4.md) |
+| Part 5 | DHCP | [part5.md](reports/part5.md) |
+| Part 6 | NAT | [part6.md](reports/part6.md) |
+| Part 7 | SSH Tunneling | [part7.md](reports/part7.md) |
+| Part 8 | Apache Web Server | [part8.md](reports/part8.md) |
 
 ---
 
