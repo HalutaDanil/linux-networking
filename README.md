@@ -11,24 +11,30 @@
 <a name="english"></a>
 ## 🇬🇧 English
 
-Network infrastructure configuration across multiple virtual machines: routers and workstations. Full network topology with DHCP, NAT, firewall, and tunneling.
+A hands-on project configuring a multi-machine network topology in VirtualBox. The goal was to understand how data moves between machines and how to control that flow with routing, NAT, firewalls, and tunnels.
 
-### 🛠️ Tech Stack
+### What was done
 
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) ![Networking](https://img.shields.io/badge/Networking-009639?style=flat-square) ![DHCP](https://img.shields.io/badge/DHCP-00A4EF?style=flat-square)
+| Topic | What & Why |
+|-------|-----------|
+| IP Addressing | Calculated network addresses, masks, and host ranges manually and with `ipcalc`. Set static IPs via `netplan`. |
+| Static Routing | Connected two machines directly with static routes using `ip r add` and persistent config in `netplan`. |
+| iperf3 | Measured bandwidth between machines. Learned to distinguish Mbps, MB/s, Gbps. |
+| Firewall (iptables) | Wrote `firewall.sh` scripts with allow/deny strategies. Opened ports 22 and 80, blocked ICMP echo replies, and probed with `nmap`. |
+| Multi-machine Topology | Built a network of 5 VMs (3 workstations + 2 routers). Configured IPs, routes, and verified connectivity with `ping` and `tcpdump`. |
+| IP Forwarding | Enabled packet forwarding on routers via `sysctl` to let traffic pass between subnets. |
+| DHCP | Configured `isc-dhcp-server` on routers for dynamic address assignment. Tested lease renewal with `dhclient`. |
+| NAT | Implemented SNAT (masquerading) and DNAT (port forwarding) with `iptables`. Accessed an Apache server behind a router. |
+| SSH Tunnels | Set up local and remote TCP forwarding to access a web server on a machine behind a firewall without exposing it directly. |
 
-### ✨ Features
+### Key takeaways
+- A network is not magic — it is **IP addresses, routing tables, and firewall rules** working together.
+- **NAT and SSH tunnels** are practical tools for accessing private networks safely.
+- `tcpdump` and `traceroute` are essential for debugging connectivity issues.
 
-| Component | Technologies |
-|-----------|-------------|
-| IP Addressing | Static IP via netplan |
-| DHCP | isc-dhcp-server |
-| NAT | iptables + sysctl ip_forward |
-| Firewall | Bash scripts for rule management |
-| Web Server | Apache2 on ws22 |
-| Tunneling | SSH local/remote forwarding |
-| Traffic Analysis | tcpdump, telnet, iperf3 |
+### Tech Stack
 
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) ![Networking](https://img.shields.io/badge/Networking-009639?style=flat-square) ![iptables](https://img.shields.io/badge/iptables-FF6D5A?style=flat-square) ![Apache](https://img.shields.io/badge/Apache-D22128?style=flat-square&logo=apache&logoColor=white)
 
 ---
 
@@ -39,24 +45,30 @@ Network infrastructure configuration across multiple virtual machines: routers a
 <a name="русский"></a>
 ## 🇷🇺 Русский
 
-Конфигурирование сетевой инфраструктуры на нескольких виртуальных машинах: роутеры и рабочие станции. Полноценная сетевая топология с DHCP, NAT, файрволом и туннелированием.
+Практический проект по настройке сетевой топологии из нескольких виртуальных машин в VirtualBox. Цель — понять, как данные перемещаются между машинами и как управлять этим потоком через маршрутизацию, NAT, файрвол и туннели.
 
-### 🛠️ Стек технологий
+### Что было сделано
 
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) ![Networking](https://img.shields.io/badge/Networking-009639?style=flat-square) ![DHCP](https://img.shields.io/badge/DHCP-00A4EF?style=flat-square)
+| Тема | Что и зачем |
+|------|-------------|
+| IP-адресация | Расчёт сетевых адресов, масок и диапазонов хостов вручную и через `ipcalc`. Настройка статических IP через `netplan`. |
+| Статическая маршрутизация | Прямое соединение двух машин статическими маршрутами через `ip r add` и постоянную конфигурацию в `netplan`. |
+| iperf3 | Измерение пропускной способности между машинами. Изучена разница между Mbps, MB/s, Gbps. |
+| Файрвол (iptables) | Написаны скрипты `firewall.sh` со стратегиями allow/deny. Открыты порты 22 и 80, заблокированы ICMP echo reply, сканирование через `nmap`. |
+| Много-машинная топология | Построена сеть из 5 ВМ (3 рабочие станции + 2 роутера). Настроены IP, маршруты, проверка связности через `ping` и `tcpdump`. |
+| IP Forwarding | Включен форвардинг пакетов на роутерах через `sysctl` для прохождения трафика между подсетями. |
+| DHCP | Настроен `isc-dhcp-server` на роутерах для динамической выдачи адресов. Протестировано обновление аренды через `dhclient`. |
+| NAT | Реализованы SNAT (маскарадинг) и DNAT (проброс портов) через `iptables`. Доступ к Apache-серверу за роутером. |
+| SSH-туннели | Настроены local и remote TCP forwarding для доступа к веб-серверу на машине за файрволом без прямого открытия порта. |
 
-### ✨ Возможности
+### Ключевые выводы
+- Сеть — это не магия, а **IP-адреса, таблицы маршрутизации и правила файрвола**, работающие совместно.
+- **NAT и SSH-туннели** — практичные инструменты для безопасного доступа к приватным сетям.
+- `tcpdump` и `traceroute` незаменимы для отладки проблем со связностью.
 
-| Компонент | Технологии |
-|-----------|-----------|
-| IP-адресация | Статический IP через netplan |
-| DHCP | isc-dhcp-server |
-| NAT | iptables + sysctl ip_forward |
-| Файрвол | Bash-скрипты управления правилами |
-| Веб-сервер | Apache2 на ws22 |
-| Туннелирование | SSH local/remote forwarding |
-| Анализ трафика | tcpdump, telnet, iperf3 |
+### Стек технологий
 
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) ![Networking](https://img.shields.io/badge/Networking-009639?style=flat-square) ![iptables](https://img.shields.io/badge/iptables-FF6D5A?style=flat-square) ![Apache](https://img.shields.io/badge/Apache-D22128?style=flat-square&logo=apache&logoColor=white)
 
 ---
 
